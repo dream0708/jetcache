@@ -4,6 +4,7 @@ import com.alicp.jetcache.CacheBuilder;
 import com.alicp.jetcache.CacheConfigException;
 import com.alicp.jetcache.external.ExternalCacheBuilder;
 import com.alicp.jetcache.redis.springdata.RedisSpringDataCacheBuilder;
+import com.alicp.jetcache.support.KryoValueEncoder;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;

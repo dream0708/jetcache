@@ -6,7 +6,7 @@
     <groupId>com.alicp.jetcache</groupId>
     <artifactId>jetcache-parent</artifactId>
     <packaging>pom</packaging>
-    <version>2.6.0</version>
+    <version>2.6.0-M12</version>
 
     <name>jetcache</name>
     <description>a Java cache abstraction which provides consistent use for various caching solutions</description>
@@ -323,6 +323,20 @@
 
         </dependencies>
     </dependencyManagement>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>nexus</name>
+            <url>http://172.24.180.27:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <!-- <repository> <id>guosen</id> <name>guosen</name> <url>http://172.24.180.27:8081/nexus/content/repositories/guosen</url>
+            </repository> -->
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>nexus</name>
+            <url>http://172.24.180.27:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

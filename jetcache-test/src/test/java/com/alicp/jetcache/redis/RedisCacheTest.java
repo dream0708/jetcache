@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
  * @author <a href="mailto:areyouok@gmail.com">huangli</a>
  */
 public class RedisCacheTest extends AbstractExternalCacheTest {
-
+    // KryoValueEncoder
     @Test
     public void testSimplePool() throws Exception {
         GenericObjectPoolConfig pc = new GenericObjectPoolConfig();

@@ -12,6 +12,8 @@ public final class CacheValueHolder<V> implements Serializable {
     private V value;
     private long expireTime;
     private long accessTime;
+    private byte[]  futureResult  ;
+    private Class   futureClass ;
 
     /**
      * used by kyro
@@ -47,5 +49,21 @@ public final class CacheValueHolder<V> implements Serializable {
 
     public void setAccessTime(long accessTime) {
         this.accessTime = accessTime;
+    }
+
+    public void setFutureClass(Class futureClass) {
+        this.futureClass = futureClass;
+    }
+
+    public void setFutureResult(byte[] futureResult){
+        this.futureResult = futureResult ;
+    }
+
+    public byte[] getFutureResult(){
+        return futureResult ;
+    }
+
+    public Class getFutureClass(){
+        return futureClass ;
     }
 }

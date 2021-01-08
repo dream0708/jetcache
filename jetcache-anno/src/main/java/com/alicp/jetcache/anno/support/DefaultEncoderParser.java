@@ -5,10 +5,7 @@ package com.alicp.jetcache.anno.support;
 
 import com.alicp.jetcache.CacheConfigException;
 import com.alicp.jetcache.anno.SerialPolicy;
-import com.alicp.jetcache.support.JavaValueDecoder;
-import com.alicp.jetcache.support.JavaValueEncoder;
-import com.alicp.jetcache.support.KryoValueDecoder;
-import com.alicp.jetcache.support.KryoValueEncoder;
+import com.alicp.jetcache.support.*;
 
 import java.net.URI;
 import java.util.HashMap;
@@ -56,7 +53,9 @@ public class DefaultEncoderParser implements EncoderParser {
             return new KryoValueEncoder(useIdentityNumber);
         } else if (SerialPolicy.JAVA.equalsIgnoreCase(valueEncoder)) {
             return new JavaValueEncoder(useIdentityNumber);
-        } else {
+        } else if (SerialPolicy.FASTJSON.equalsIgnoreCase(valueEncoder)) {
+            return new FastjsonValueEncoder(useIdentityNumber);
+        }  else {
             throw new CacheConfigException("not supported:" + valueEncoder);
         }
     }
@@ -78,6 +77,8 @@ public class DefaultEncoderParser implements EncoderParser {
             return new KryoValueDecoder(useIdentityNumber);
         } else if (SerialPolicy.JAVA.equalsIgnoreCase(valueDecoder)) {
             return javaValueDecoder(useIdentityNumber);
+        }else if (SerialPolicy.FASTJSON.equalsIgnoreCase(valueDecoder)) {
+            return new FastjsonValueDecoder(useIdentityNumber);
         } else {
             throw new CacheConfigException("not supported:" + valueDecoder);
         }

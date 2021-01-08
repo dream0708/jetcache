@@ -50,4 +50,22 @@ public abstract class AbstractExternalCache<K, V> extends AbstractCache<K, V> {
         }
     }
 
+    public byte[] buildKey(K key , String append) {
+        try {
+            Object newKey = key;
+            if (key instanceof byte[]) {
+                newKey = key ;
+            } else if(key instanceof String){
+                newKey = key;
+            } else {
+                if (config.getKeyConvertor() != null) {
+                    newKey = config.getKeyConvertor().apply(key);
+                }
+            }
+            return ExternalKeyUtil.buildKeyAfterConvert(newKey, config.getKeyPrefix());
+        } catch (IOException e) {
+            throw new CacheException(e);
+        }
+    }
+
 }
